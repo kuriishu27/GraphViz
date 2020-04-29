@@ -4,7 +4,7 @@ import GraphViz
 // MARK: - Render
 
 fileprivate func which(_ command: String) throws -> URL {
-    let task = Process()
+    let task = CommandLine()
     let url = URL(fileURLWithPath: "/usr/bin/which")
     if #available(OSX 10.13, *) {
         task.executableURL = url
@@ -34,7 +34,7 @@ extension Graph {
         let encoded = DOTEncoder().encode(self)
 
         let url = try which(layout.rawValue)
-        let task = Process()
+        let task = CommandLine()
         if #available(OSX 10.13, *) {
             task.executableURL = url
         } else {
